@@ -12,10 +12,12 @@ require("dotenv").config()
 
 
 app.use(express.json())
-app.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
-}))
+app.use(
+    cors({
+        origin: "https://book-review-ashwin.vercel.app",
+        credentials: true,
+    })
+);
 app.use(helmet())
 app.use(hpp())
 app.use(
