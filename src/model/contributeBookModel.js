@@ -32,7 +32,11 @@ const contributeBookSchema = new mongoose.Schema({
         type: String,
         default: '',
     }
-})
+},{
+    timestamps:true,
+    updateTimestamps:true
+}
+)
 
 const contributeBookModel = mongoose.model("UserBookSuggestions", contributeBookSchema);
 
