@@ -2,14 +2,13 @@ const bookService = require("../service/book")
 
 const allBookDetails = async (req, res) => {
     try{
-        const data = await bookService.allBookDetails();
-
+        const {data} = await bookService.allBookDetails();
         const shuffledData = data.sort(() => Math.random() - 0.5);
 
-        res.status(200).json({data : shuffledData});
+        res.status(200).json({ data: shuffledData });
     }catch(err){
         res.status(500).json({
-            message: "Internal Server Error",
+            message: err.message,
         })
     }
 }
