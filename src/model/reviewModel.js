@@ -5,7 +5,7 @@ const reviewSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, "User id needed"],
-        ref: "User",
+        ref: "Users",
     },
     review: {
         type: String,
@@ -14,7 +14,7 @@ const reviewSchema = new mongoose.Schema({
     bookId: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, "Book ID is Required"],
-        ref: "Book"
+        ref: "Books"
     },
     stars: {
         type: String,

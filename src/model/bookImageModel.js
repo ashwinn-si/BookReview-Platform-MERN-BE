@@ -4,7 +4,7 @@ const bookImageSchema = new mongoose.Schema({
     bookId: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, "Please enter a bookId of review"],
-        ref: "Book",
+        ref: "Books",
     },
     image: {
         data: Buffer,
