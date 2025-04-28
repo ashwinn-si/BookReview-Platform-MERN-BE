@@ -38,14 +38,18 @@ The backend follows the **MVC (Model-View-Controller)** architecture for clean s
 ```
 BookReview-Platform-MERN-BE/
 │
-├── models/            # Mongoose models (Schemas)
-├── controllers/       # Controller logic for handling requests
-├── routes/            # API routes (user routes, book routes, etc.)
-├── middleware/        # Authentication and other middleware
-├── config/            # Configuration files (database, environment)
-├── server.js          # Main entry point
-├── package.json       # Backend dependencies and scripts
-└── README.md          # Backend documentation (this file)
+├── src/
+│   ├── model/          # Mongoose models (Schemas)
+│   ├── controller/     # Controller logic
+│   ├── route/          # API routes
+│   ├── middleware/     # Middleware (authentication, error handlers, etc.)
+│   ├── config/         # Configuration files (DB connection, environment variables)
+│   ├── app.js          # Express app - where all middlewares and routes are set up
+│
+├── server.js           # Main entry point - connects DB and starts server
+├── package.json        # Project metadata, dependencies
+└── README.md           # Project documentation
+
 ```
 
 ---
