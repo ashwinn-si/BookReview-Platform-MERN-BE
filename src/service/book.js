@@ -7,9 +7,32 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+const getAllReview = async (data) => {
+    const { id } = data;
+    const reviews = await reviewModel
+        .find({ bookId: id })
+        .select(["stars", "-_id"]);
+    let totalStars = 0;
+    reviews.forEach((review) => {
+        totalStars += parseInt(review.stars);
+    });
+    if(totalStars === 0) {
+        return {
+            stars: -1,
+        }
+    }
+    return { stars: Math.round(totalStars / reviews.length) };
+};
+
 const allBookDetails = async(data) => {
     const bookDetails = await bookModel.find({}).select(["-__v"]);
-    return {data : bookDetails};
+    const resultData = await Promise.all(bookDetails.map(async(book) => {
+        return {
+            ...book._doc,
+            stars: await getAllReview({id: book._id}).then(res => res.stars),
+        }
+    }))
+    return { data: resultData };
 }
 
 const addBook = async (data) => {
